@@ -25,8 +25,14 @@ export default function Hero() {
         />
       </div>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10">
-        <p className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.34em] text-cream/90">
+      <div
+        className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10"
+        style={{ opacity: 1 }}
+      >
+        <p
+          className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.34em]"
+          style={{ color: "#F9F6F0", opacity: 1 }}
+        >
           <span
             className="inline-block h-px w-10 bg-terra"
             aria-hidden="true"
@@ -34,12 +40,18 @@ export default function Hero() {
           Son Designs — Architecture &amp; Interiors
         </p>
 
-        <h1 className="mt-8 max-w-4xl font-display text-[2.85rem] font-medium leading-[1.04] text-cream sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+        <h1
+          className="mt-8 max-w-4xl font-display text-[2.85rem] font-medium leading-[1.04] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+          style={{ color: "#F9F6F0", opacity: 1 }}
+        >
           Designing spaces that <em className="italic text-terra">breathe</em>,
           inspire, and endure.
         </h1>
 
-        <p className="mt-8 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg">
+        <p
+          className="mt-8 max-w-xl text-base leading-relaxed md:text-lg"
+          style={{ color: "rgba(249,246,240,0.88)", opacity: 1 }}
+        >
           Architecture and interior design for spaces made to last. We work
           across Kenya and East Africa.
         </p>
