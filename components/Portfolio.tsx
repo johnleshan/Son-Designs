@@ -20,6 +20,9 @@ const PROJECTS: Project[] = [
   { src: IMG.project6, name: "Casa del Mar", location: "Watamu", type: "Interiors + Landscape", height: "h-80 md:h-[28rem]" },
   { src: IMG.project7, name: "The Rift Retreat", location: "Naivasha", type: "Architecture", height: "h-96 md:h-[32rem]" },
   { src: IMG.project8, name: "The Loft Collection", location: "Upperhill, Nairobi", type: "Interior Design", height: "h-72 md:h-[26rem]" },
+  { src: IMG.project9, name: "Garden Atrium Residence", location: "Lavington, Nairobi", type: "Architecture", height: "h-[30rem] md:h-[40rem]" },
+  { src: IMG.project10, name: "Coastal Courtyard Villa", location: "Diani Beach", type: "Interiors + Landscape", height: "h-80 md:h-[34rem]" },
+  { src: IMG.project11, name: "The Urban Veranda", location: "Kileleshwa, Nairobi", type: "Full Turnkey", height: "h-80 md:h-[28rem]" },
 ];
 
 function ProjectCard({ project }: { project: Project }) {

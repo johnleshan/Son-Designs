@@ -4,6 +4,7 @@ import Philosophy from "@/components/Philosophy";
 import ServicesGrid from "@/components/ServicesGrid";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import Portfolio from "@/components/Portfolio";
+import Team from "@/components/Team";
 import PressStrip from "@/components/PressStrip";
 import Testimonials from "@/components/Testimonials";
 import Stats from "@/components/Stats";
@@ -19,6 +20,7 @@ export default function Home() {
       <ServicesGrid />
       <ProcessTimeline />
       <Portfolio />
+      <Team />
       <PressStrip />
       <Testimonials />
       <Stats />

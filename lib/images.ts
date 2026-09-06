@@ -11,4 +11,10 @@ export const IMG = {
   project6: p("0008"),
   project7: p("0009"),
   project8: p("0010"),
+  project9: "/images/project9.jpg",
+  project10: "/images/project10.jpg",
+  project11: "/images/project11.jpg",
+  teamOsmoa: "/images/team-osmoa.jpg",
+  teamAron: "/images/team-aron-rotich.jpg",
+  teamJoram: "/images/team-joram-mwakaba.jpg",
 } as const;

@@ -72,10 +72,10 @@ export default function ContactForm() {
                   Email
                 </p>
                 <a
-                  href="mailto:hello@son-designs.com"
+                  href="mailto:silasomosa82@gmail.com"
                   className="mt-2 block font-display text-2xl font-medium text-ink transition-colors hover:text-terra-deep"
                 >
-                  hello@son-designs.com
+                  silasomosa82@gmail.com
                 </a>
               </div>
             </Reveal>
@@ -85,10 +85,10 @@ export default function ContactForm() {
                   Phone
                 </p>
                 <a
-                  href="tel:+254207654321"
+                  href="tel:+254707444296"
                   className="mt-2 block font-display text-2xl font-medium text-ink transition-colors hover:text-terra-deep"
                 >
-                  +254 20 765 4321
+                  +254 707 444 296
                 </a>
               </div>
             </Reveal>

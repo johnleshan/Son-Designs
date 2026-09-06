@@ -61,7 +61,7 @@ export default function RootLayout({
           <script
             dangerouslySetInnerHTML={{
               __html:
-                "(function(){var t=document.documentElement;if(t&&t.hasAttribute('class')){t.removeAttribute('class');}})();",
+                "(function(){var strip=function(){var t=document.documentElement;if(t&&t.hasAttribute('class')){t.removeAttribute('class');}};strip();new MutationObserver(strip).observe(document.documentElement,{attributes:true,attributeFilter:['class']});})();",
             }}
           />
         )}
