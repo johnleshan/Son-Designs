@@ -4,9 +4,9 @@ const PRESS = [
   { name: "AD", serif: true },
   { name: "ELLE DECOR", serif: true },
   { name: "DEZEEN", serif: false },
-  { name: "FINANCIAL TIMES", serif: true },
   { name: "WALLPAPER*", serif: false },
-  { name: "ATLAS OF INTERIORS", serif: false },
+  { name: "DAILY NATION", serif: true },
+  { name: "THE EAST AFRICAN", serif: true },
 ];
 
 export default function PressStrip() {

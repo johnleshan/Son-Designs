@@ -12,14 +12,14 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
 
   return (
-    <section ref={ref} id="top" className="relative flex min-h-svh flex-col">
+    <section ref={ref} id="top" className="relative flex min-h-svh flex-col overflow-hidden">
       <motion.div
         style={reduce ? undefined : { y }}
-        className="absolute inset-0"
+        className="absolute inset-x-0 -top-[12%] h-[124%]"
       >
         <Image
           src={IMG.hero}
@@ -68,7 +68,7 @@ export default function Hero() {
           className="mt-8 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg"
         >
           Architecture and interior design for spaces made to last. We work
-          across the UK, Italy, and Spain.
+          across Kenya and East Africa.
         </motion.p>
 
         <motion.div

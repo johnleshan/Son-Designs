@@ -82,15 +82,15 @@ export default function ProcessTimeline() {
                       </span>
                     </div>
                     <div className="border-b border-line pb-10 md:pb-14">
-                      <div className="grid gap-2 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-6">
+                      <div className="flex flex-wrap items-baseline gap-x-8 gap-y-1">
                         <span className="font-display text-6xl font-light leading-none text-charcoal/15 md:text-8xl">
                           {step.no}
                         </span>
-                        <span className="hidden self-start text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-sage md:block">
+                        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-sage">
                           {step.duration}
                         </span>
                       </div>
-                      <h3 className="-mt-7 font-display text-3xl font-medium text-ink md:-mt-9 md:text-4xl">
+                      <h3 className="mt-4 font-display text-3xl font-medium text-ink md:mt-5 md:text-4xl">
                         {step.title}
                       </h3>
                       <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate md:text-base">

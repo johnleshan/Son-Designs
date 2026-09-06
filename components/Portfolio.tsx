@@ -12,14 +12,14 @@ type Project = {
 };
 
 const PROJECTS: Project[] = [
-  { src: IMG.project1, name: "The Courtyard House", location: "Como, Italy", type: "Architecture + Interiors", height: "h-72 md:h-[26rem]" },
-  { src: IMG.project2, name: "Sage Terraces", location: "London, UK", type: "Interior Design", height: "h-96 md:h-[34rem]" },
-  { src: IMG.project3, name: "Villa Meridiana", location: "Sanremo, Italy", type: "Landscape + Architecture", height: "h-80 md:h-[30rem]" },
-  { src: IMG.project4, name: "The Oak Studio", location: "Kent, UK", type: "Heritage Retrofit", height: "h-72 md:h-[24rem]" },
-  { src: IMG.project5, name: "Casa Serena", location: "Seville, Spain", type: "Full Turnkey", height: "h-96 md:h-[36rem]" },
-  { src: IMG.project6, name: "Casa del Mar", location: "Valencia, Spain", type: "Interiors + Landscape", height: "h-80 md:h-[28rem]" },
-  { src: IMG.project7, name: "Haus Am Wald", location: "Milan, Italy", type: "Architecture", height: "h-96 md:h-[32rem]" },
-  { src: IMG.project8, name: "The Loft Collection", location: "London, UK", type: "Interior Design", height: "h-72 md:h-[26rem]" },
+  { src: IMG.project1, name: "The Courtyard House", location: "Karen, Nairobi", type: "Architecture + Interiors", height: "h-72 md:h-[26rem]" },
+  { src: IMG.project2, name: "Sage Terraces", location: "Westlands, Nairobi", type: "Interior Design", height: "h-96 md:h-[34rem]" },
+  { src: IMG.project3, name: "Villa Meridiana", location: "Diani Beach", type: "Landscape + Architecture", height: "h-80 md:h-[30rem]" },
+  { src: IMG.project4, name: "The Oak Studio", location: "Nanyuki", type: "Rural Retreat", height: "h-72 md:h-[24rem]" },
+  { src: IMG.project5, name: "Casa Serena", location: "Kilimani, Nairobi", type: "Full Turnkey", height: "h-96 md:h-[36rem]" },
+  { src: IMG.project6, name: "Casa del Mar", location: "Watamu", type: "Interiors + Landscape", height: "h-80 md:h-[28rem]" },
+  { src: IMG.project7, name: "The Rift Retreat", location: "Naivasha", type: "Architecture", height: "h-96 md:h-[32rem]" },
+  { src: IMG.project8, name: "The Loft Collection", location: "Upperhill, Nairobi", type: "Interior Design", height: "h-72 md:h-[26rem]" },
 ];
 
 function ProjectCard({ project }: { project: Project }) {
@@ -34,11 +34,11 @@ function ProjectCard({ project }: { project: Project }) {
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
         <div
-          className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-0 opacity-100 transition-opacity duration-500 lg:opacity-0 lg:group-hover:opacity-100"
           style={{ background: "linear-gradient(to bottom, rgba(32,31,29,0) 30%, rgba(32,31,29,0.78) 100%)" }}
           aria-hidden="true"
         />
-        <figcaption className="absolute inset-x-0 bottom-0 translate-y-3 p-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+        <figcaption className="absolute inset-x-0 bottom-0 translate-y-0 p-6 opacity-100 transition-all duration-500 lg:translate-y-3 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-terra">
             {project.type}
           </p>
@@ -61,7 +61,7 @@ export default function Portfolio() {
             eyebrow="Selected work"
             title="Projects that hold"
             titleAccent="their own light."
-            description="A small cross-section of completed and in-progress work across our three homes: the UK, Italy and Spain."
+            description="A small cross-section of completed and in-progress work across Kenya and East Africa."
           />
           <Reveal delay={0.15}>
             <a

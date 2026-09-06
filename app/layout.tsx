@@ -19,7 +19,30 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Son Designs — Architecture & Interior Design Studio",
   description:
-    "A high-end architecture and interior design studio working across the UK, Italy, and Spain. Designing spaces that breathe, inspire, and endure.",
+    "A high-end architecture and interior design studio in Nairobi, working across Kenya and East Africa. Designing spaces that breathe, inspire, and endure.",
+  keywords: [
+    "architecture",
+    "interior design",
+    "landscape design",
+    "project management",
+    "Nairobi architect",
+    "Kenya interior design studio",
+    "East Africa architecture",
+  ],
+  openGraph: {
+    title: "Son Designs — Architecture & Interior Design Studio",
+    description:
+      "Designing spaces that breathe, inspire, and endure. Architecture and interiors across Kenya and East Africa.",
+    type: "website",
+    locale: "en_KE",
+    siteName: "Son Designs",
+  },
+  twitter: {
+    card: "summary",
+    title: "Son Designs — Architecture & Interior Design Studio",
+    description:
+      "Designing spaces that breathe, inspire, and endure. Architecture and interiors across Kenya and East Africa.",
+  },
 };
 
 export const viewport: Viewport = {
@@ -32,11 +55,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${cormorant.variable} ${manrope.variable}`}
-    >
-      <body className="min-h-screen bg-cream text-charcoal font-body antialiased">
+    <html lang="en">
+      <head>
+        {process.env.NODE_ENV === "development" && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "(function(){var t=document.documentElement;if(t&&t.hasAttribute('class')){t.removeAttribute('class');}})();",
+            }}
+          />
+        )}
+      </head>
+      <body
+        className={`${cormorant.variable} ${manrope.variable} min-h-screen bg-cream text-charcoal font-body antialiased`}
+      >
         {children}
       </body>
     </html>

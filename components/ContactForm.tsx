@@ -13,11 +13,11 @@ const PROJECT_TYPES = [
 ];
 
 const BUDGETS = [
-  "Under £50k",
-  "£50k – £150k",
-  "£150k – £500k",
-  "£500k – £1m",
-  "£1m+",
+  "Under KSh 5M",
+  "KSh 5M – KSh 15M",
+  "KSh 15M – KSh 50M",
+  "KSh 50M – KSh 150M",
+  "KSh 150M+",
 ];
 
 const inputClass =
@@ -42,10 +42,16 @@ function Field({
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    if (sending) return;
+    setSending(true);
+    window.setTimeout(() => {
+      setSending(false);
+      setSent(true);
+    }, 900);
   };
 
   return (
@@ -79,10 +85,10 @@ export default function ContactForm() {
                   Phone
                 </p>
                 <a
-                  href="tel:+442079460958"
+                  href="tel:+254207654321"
                   className="mt-2 block font-display text-2xl font-medium text-ink transition-colors hover:text-terra-deep"
                 >
-                  +44 20 7946 0958
+                  +254 20 765 4321
                 </a>
               </div>
             </Reveal>
@@ -93,20 +99,20 @@ export default function ContactForm() {
                 </p>
                 <div className="mt-3 grid grid-cols-2 gap-6">
                   <div>
-                    <p className="text-sm font-semibold text-ink">London</p>
+                    <p className="text-sm font-semibold text-ink">Nairobi</p>
                     <p className="mt-1 text-sm text-slate">
-                      48 Charlotte Row, EC2
+                      The Point, Riverside Drive, Westlands
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-ink">Seattle</p>
+                    <p className="text-sm font-semibold text-ink">Mombasa</p>
                     <p className="mt-1 text-sm text-slate">
-                      1207 Elliott Ave, WA
+                      Nyali Beach Court, Mtama
                     </p>
                   </div>
                 </div>
                 <p className="mt-6 text-xs leading-relaxed text-slate/80">
-                  Currently working across the UK, Italy and Spain.
+                  Currently working across Kenya and East Africa.
                 </p>
               </div>
             </Reveal>
@@ -169,38 +175,62 @@ export default function ContactForm() {
 
                 <div className="grid gap-6 sm:grid-cols-2">
                   <Field label="Project Type">
-                    <select
-                      name="projectType"
-                      required
-                      defaultValue=""
-                      className={`${inputClass} appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%235F5D57%22 stroke-width=%221.5%22><path d=%22M6 9l6 6 6-6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>')] bg-[length:1rem] bg-[right_1rem_center] bg-no-repeat pr-10`}
-                    >
-                      <option value="" disabled>
-                        Select a discipline
-                      </option>
-                      {PROJECT_TYPES.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
+                    <div className="relative">
+                      <select
+                        name="projectType"
+                        required
+                        defaultValue=""
+                        className={`${inputClass} appearance-none pr-10`}
+                      >
+                        <option value="" disabled>
+                          Select a discipline
                         </option>
-                      ))}
-                    </select>
+                        {PROJECT_TYPES.map((t) => (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+                      <svg
+                        className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </Field>
                   <Field label="Budget Range">
-                    <select
-                      name="budget"
-                      required
-                      defaultValue=""
-                      className={`${inputClass} appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%235F5D57%22 stroke-width=%221.5%22><path d=%22M6 9l6 6 6-6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>')] bg-[length:1rem] bg-[right_1rem_center] bg-no-repeat pr-10`}
-                    >
-                      <option value="" disabled>
-                        Select a range
-                      </option>
-                      {BUDGETS.map((b) => (
-                        <option key={b} value={b}>
-                          {b}
+                    <div className="relative">
+                      <select
+                        name="budget"
+                        required
+                        defaultValue=""
+                        className={`${inputClass} appearance-none pr-10`}
+                      >
+                        <option value="" disabled>
+                          Select a range
                         </option>
-                      ))}
-                    </select>
+                        {BUDGETS.map((b) => (
+                          <option key={b} value={b}>
+                            {b}
+                          </option>
+                        ))}
+                      </select>
+                      <svg
+                        className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </Field>
                 </div>
 
@@ -215,19 +245,32 @@ export default function ContactForm() {
 
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-charcoal px-8 py-4 text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-300 hover:-translate-y-px hover:bg-terra-deep sm:w-auto"
+                  disabled={sending}
+                  className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-charcoal px-8 py-4 text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-300 hover:-translate-y-px hover:bg-terra-deep disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-charcoal sm:w-auto"
                 >
-                  Send Enquiry
-                  <svg
-                    className="h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 12h14m0 0l-6-6m6 6l-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  {sending ? "Sending…" : "Send Enquiry"}
+                  {sending ? (
+                    <svg
+                      className="h-4 w-4 animate-spin"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" className="opacity-25" />
+                      <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="opacity-90" />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14m0 0l-6-6m6 6l-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
                 </button>
 
                 <p className="text-xs leading-relaxed text-slate/70">

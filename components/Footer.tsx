@@ -49,13 +49,37 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3 border-t border-cream/10 pt-8 text-xs text-cream/40 md:flex-row md:items-center md:justify-between">
-            <p>
-              © {new Date().getFullYear()} Son Designs. All rights reserved.
-            </p>
-            <p className="tracking-[0.14em] uppercase">
-              London · Lake Como · Seville
-            </p>
+          <div className="mt-10 flex flex-col gap-6 border-t border-cream/10 pt-8 text-xs text-cream/40 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              <p>© {new Date().getFullYear()} Son Designs. All rights reserved.</p>
+              <span className="hidden h-3 w-px bg-cream/15 md:inline-block" aria-hidden="true" />
+              <a
+                href="#contact"
+                className="transition-colors hover:text-cream"
+              >
+                Privacy
+              </a>
+              <a
+                href="#contact"
+                className="transition-colors hover:text-cream"
+              >
+                Terms
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              <span className="tracking-[0.14em] uppercase">Nairobi · Mombasa · Diani</span>
+              <span className="hidden h-3 w-px bg-cream/15 md:inline-block" aria-hidden="true" />
+              {["Instagram", "Pinterest", "LinkedIn"].map((social) => (
+                <a
+                  key={social}
+                  href="#top"
+                  className="tracking-[0.14em] uppercase transition-colors hover:text-cream"
+                >
+                  {social}
+                </a>
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>

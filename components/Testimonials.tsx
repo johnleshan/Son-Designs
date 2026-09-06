@@ -8,20 +8,20 @@ const QUOTES = [
   {
     quote:
       "What stood out most was their attention to detail at the earliest stages. Phase Zero gave the whole project a clarity we hadn't found anywhere else — and it never wavered.",
-    name: "Elena Rossi",
-    context: "Villa Meridiana, Lake Como",
+    name: "Grace & David Mwangi",
+    context: "Villa Meridiana, Diani Beach",
   },
   {
     quote:
       "They translated a very personal brief into something calm, precise and quietly extraordinary. The house feels as though it has always belonged on this hillside.",
-    name: "James & Sophie Hartley",
-    context: "Sage Terraces, London",
+    name: "Prof. Amina Hassan",
+    context: "The Courtyard House, Karen",
   },
   {
     quote:
       "From first drawing to final fixing, every decision felt considered. No guesswork, no surprises — just beautifully made choices, delivered on time and on budget.",
-    name: "Marta Delgado",
-    context: "Casa Serena, Seville",
+    name: "Derek Otieno",
+    context: "Casa Serena, Kilimani",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function Testimonials() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.1} className="relative mt-12 min-h-[19rem] md:min-h-[17rem]">
+        <Reveal delay={0.1} className="relative mt-12 min-h-[21rem] md:min-h-[19rem]">
           <span
             className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 font-display text-[7rem] leading-none text-terra/20 md:text-[9rem]"
             aria-hidden="true"

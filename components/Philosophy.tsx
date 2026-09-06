@@ -31,7 +31,7 @@ export default function Philosophy() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <section
@@ -42,7 +42,10 @@ export default function Philosophy() {
       <div className="grid lg:grid-cols-2">
         {/* Left — image */}
         <div className="relative h-[52vh] min-h-[420px] overflow-hidden lg:h-auto lg:min-h-[820px]">
-          <motion.div style={reduce ? undefined : { y }} className="absolute inset-0">
+          <motion.div
+            style={reduce ? undefined : { y }}
+            className="absolute inset-x-0 -top-[12%] h-[124%]"
+          >
             <Image
               src={IMG.philosophy}
               alt="A light-filled interior from a Son Designs project"
@@ -53,7 +56,7 @@ export default function Philosophy() {
           </motion.div>
           <div className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-cream">
             <span className="font-display text-sm italic">
-              Casa del Sole — Lake Como, Italy
+              Acacia House — Karen, Nairobi
             </span>
           </div>
         </div>
