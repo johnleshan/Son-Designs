@@ -52,7 +52,9 @@ The repo includes a `render.yaml` blueprint, so deploying is a single click:
 
 What it runs:
 
-- **Build** — `npm ci && npm run build` (Node 24)
+- **Build** — `npm ci --include=dev && npm run build` (Node 24; Render
+  sets `NODE_ENV=production` during builds, so dev dependencies must be
+  requested explicitly)
 - **Start** — `npm start` (`next start`, serves the static + prerendered output)
 - **Health check** — `/`
 
