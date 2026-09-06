@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import Reveal from "./Reveal";
 
@@ -30,7 +29,6 @@ const DURATION = 6500;
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const reduce = useReducedMotion();
 
   const next = useCallback(() => {
     setIndex((i) => (i + 1) % QUOTES.length);
@@ -41,10 +39,10 @@ export default function Testimonials() {
   }, []);
 
   useEffect(() => {
-    if (paused || reduce) return;
+    if (paused) return;
     const id = window.setInterval(next, DURATION);
     return () => window.clearInterval(id);
-  }, [paused, reduce, next]);
+  }, [paused, next]);
 
   const quote = QUOTES[index];
 
@@ -71,28 +69,19 @@ export default function Testimonials() {
             &ldquo;
           </span>
 
-          <AnimatePresence mode="wait">
-            <motion.blockquote
-              key={index}
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduce ? { opacity: 0 } : { opacity: 0, y: -24 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
-            >
-              <p className="text-center font-display text-2xl font-medium leading-snug text-ink md:text-4xl md:leading-snug">
-                {quote.quote}
+          <blockquote key={index} className="relative">
+            <p className="text-center font-display text-2xl font-medium leading-snug text-ink md:text-4xl md:leading-snug">
+              {quote.quote}
+            </p>
+            <footer className="mt-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-charcoal">
+                {quote.name}
               </p>
-              <footer className="mt-8 text-center">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-charcoal">
-                  {quote.name}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-slate">
-                  {quote.context}
-                </p>
-              </footer>
-            </motion.blockquote>
-          </AnimatePresence>
+              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-slate">
+                {quote.context}
+              </p>
+            </footer>
+          </blockquote>
         </Reveal>
 
         <div className="mt-10 flex items-center justify-center gap-6">
