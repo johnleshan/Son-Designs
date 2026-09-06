@@ -1,25 +1,44 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { IMG } from "@/lib/images";
 
+const SCROLL_GATE = 60;
+
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let raf = 0;
+    const apply = () => {
+      raf = 0;
+      const el = textRef.current;
+      if (!el) return;
+      const y = window.scrollY || window.pageYOffset || 0;
+      el.style.opacity = "1";
+      el.style.transform = "none";
+      if (y <= SCROLL_GATE) return;
+      const range = Math.max(window.innerHeight * 0.7, 240);
+      const t = Math.min((y - SCROLL_GATE) / range, 1);
+      el.style.opacity = (1 - t).toFixed(3);
+      el.style.transform = `translateY(${(t * 48).toFixed(1)}px)`;
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(apply);
+    };
+    apply();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
-    <section ref={ref} id="top" className="relative flex min-h-svh flex-col overflow-hidden">
-      <motion.div
-        style={reduce ? undefined : { y }}
-        className="absolute inset-x-0 -top-[12%] h-[124%]"
-      >
+    <section id="top" className="relative flex min-h-svh flex-col overflow-hidden">
+      <div className="absolute inset-x-0 -top-[12%] h-[124%]">
         <Image
           src={IMG.hero}
           alt="A serene architectural interior designed by Son Designs"
@@ -36,9 +55,12 @@ export default function Hero() {
           }}
           aria-hidden="true"
         />
-      </motion.div>
+      </div>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10">
+      <div
+        ref={textRef}
+        className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10"
+      >
         <p className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.34em] text-cream/90">
           <span
             className="inline-block h-px w-10 bg-terra"
@@ -47,32 +69,17 @@ export default function Hero() {
           Son Designs — Architecture &amp; Interiors
         </p>
 
-        <motion.h1
-          initial={reduce ? false : { opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 max-w-4xl font-display text-[2.85rem] font-medium leading-[1.04] text-cream sm:text-6xl md:text-7xl lg:text-[5.5rem]"
-        >
+        <h1 className="mt-8 max-w-4xl font-display text-[2.85rem] font-medium leading-[1.04] text-cream sm:text-6xl md:text-7xl lg:text-[5.5rem]">
           Designing spaces that <em className="italic text-terra">breathe</em>,
           inspire, and endure.
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg"
-        >
+        <p className="mt-8 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg">
           Architecture and interior design for spaces made to last. We work
           across Kenya and East Africa.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
-        >
+        <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
           <a
             href="#work"
             className="inline-flex items-center justify-center rounded-full border border-cream/50 px-8 py-3.5 text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-300 hover:-translate-y-px hover:border-cream hover:bg-cream/10"
@@ -85,15 +92,12 @@ export default function Hero() {
           >
             Start Your Project
           </a>
-        </motion.div>
+        </div>
       </div>
 
-      <motion.a
+      <a
         href="#studio"
         aria-label="Scroll down"
-        initial={reduce ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/80 transition-colors hover:text-cream"
       >
         <span className="flex flex-col items-center gap-2">
@@ -111,7 +115,7 @@ export default function Hero() {
             <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
-      </motion.a>
+      </a>
     </section>
   );
 }
