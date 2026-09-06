@@ -13,7 +13,6 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
 
   return (
     <section ref={ref} id="top" className="relative flex min-h-svh flex-col overflow-hidden">
@@ -39,10 +38,7 @@ export default function Hero() {
         />
       </motion.div>
 
-      <motion.div
-        style={reduce ? undefined : { y: contentY }}
-        className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10"
-      >
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10">
         <p className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.34em] text-cream/90">
           <span
             className="inline-block h-px w-10 bg-terra"
@@ -90,7 +86,7 @@ export default function Hero() {
             Start Your Project
           </a>
         </motion.div>
-      </motion.div>
+      </div>
 
       <motion.a
         href="#studio"

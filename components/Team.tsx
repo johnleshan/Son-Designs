@@ -16,13 +16,14 @@ const MEMBERS: Member[] = [
     src: IMG.teamOsmoa,
     name: "DSGN OMOSA",
     role: "Space Planner & Founder",
+    phone: "+254 707 444 296",
     initials: "DSGN",
   },
   {
     src: IMG.teamAron,
     name: "Aron Rotich",
     role: "Interior Designer",
-    phone: "0768 327 899",
+    phone: "+254 768 327 899",
     initials: "AR",
   },
   {
