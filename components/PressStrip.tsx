@@ -1,12 +1,12 @@
 import Reveal from "./Reveal";
 
 const PRESS = [
-  { name: "AD", serif: true },
-  { name: "ELLE DECOR", serif: true },
-  { name: "DEZEEN", serif: false },
-  { name: "WALLPAPER*", serif: false },
-  { name: "DAILY NATION", serif: true },
-  { name: "THE EAST AFRICAN", serif: true },
+  { name: "SAFARICOM", serif: false },
+  { name: "EQUITY BANK", serif: true },
+  { name: "KENYA AIRWAYS", serif: true },
+  { name: "EABL", serif: false },
+  { name: "NATION MEDIA GROUP", serif: false },
+  { name: "NAIVAS", serif: false },
 ];
 
 export default function PressStrip() {
