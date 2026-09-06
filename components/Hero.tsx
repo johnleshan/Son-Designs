@@ -1,41 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
 import { IMG } from "@/lib/images";
 
-const SCROLL_GATE = 60;
-
 export default function Hero() {
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let raf = 0;
-    const apply = () => {
-      raf = 0;
-      const el = textRef.current;
-      if (!el) return;
-      const y = window.scrollY || window.pageYOffset || 0;
-      el.style.opacity = "1";
-      el.style.transform = "none";
-      if (y <= SCROLL_GATE) return;
-      const range = Math.max(window.innerHeight * 0.7, 240);
-      const t = Math.min((y - SCROLL_GATE) / range, 1);
-      el.style.opacity = (1 - t).toFixed(3);
-      el.style.transform = `translateY(${(t * 48).toFixed(1)}px)`;
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(apply);
-    };
-    apply();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
     <section id="top" className="relative flex min-h-svh flex-col overflow-hidden">
       <div className="absolute inset-x-0 -top-[12%] h-[124%]">
@@ -57,10 +25,7 @@ export default function Hero() {
         />
       </div>
 
-      <div
-        ref={textRef}
-        className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10"
-      >
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-28 pt-28 lg:px-10">
         <p className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.34em] text-cream/90">
           <span
             className="inline-block h-px w-10 bg-terra"
